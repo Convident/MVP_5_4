@@ -7,8 +7,8 @@ export default function App() {
     <View style={styles.container}>
       <Text>Convident - Yay!</Text>
       <StatusBar style="auto" />
-      <QuestionContainer questionType="SAQ"/>
-      <QuestionContainer questionType="MCQ"/>
+      <QuestionContainer questionType="saq"/>
+      <QuestionContainer questionType="mcq"/>
     </View>
   );
 }
