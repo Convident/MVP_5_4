@@ -45,7 +45,6 @@ const QuestionContainer: React.FC<QuestionContainerProps> = ({ questionType }) =
                         setQuestion(info[0]);
                         setChoices([info[1], info[2], info[3], info[4]]);
                         setQuestionSet(true);
-                        //return Promise.resolve(firstLine);
                     })
                     .catch(error => {
                         console.error('Error fetching CSV data:', error);
