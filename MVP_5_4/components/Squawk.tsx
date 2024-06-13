@@ -1,12 +1,46 @@
 import React, { ReactNode, useState, useEffect } from 'react';
-import MultipleChoiceQuestion from './MCQ'; // Import the question types from other files
+import MultipleChoiceQuestion from './MCQ';
 import TextQuestion from './SAQ';
-import { View, Text } from 'react-native';
+import { View, Text, Platform } from 'react-native';
 
 import { getApp } from "firebase/app";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-
+import * as Permissions from 'expo-permissions';
 import app from '../firebaseConfig';
+import * as Notifications from 'expo-notifications';
+
+// Schedule notification at 12 PM EST
+const scheduleDailyNotification = async () => {
+    // Calculate the next 12 PM EST in milliseconds
+    const now = new Date();
+    const nextNoon = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate(),
+      19 + (now.getTimezoneOffset() / 60) + 4, // Adjusting for EST (UTC-4)
+      0,
+      0
+    );
+  
+    if (nextNoon.getTime() < now.getTime()) {
+      nextNoon.setDate(nextNoon.getDate() + 1);
+    }
+  
+    await Notifications.cancelAllScheduledNotificationsAsync(); // Clear previous notifications
+  
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: "Daily Question",
+        body: "It's time for your daily question!",
+      },
+      trigger: {
+        hour: 12,
+        minute: 0,
+        repeats: true,
+        timezone: 'America/New_York', // Using IANA timezone identifier
+      },
+    });
+  };
 
 interface QuestionContainerProps {
     questionType: string;
@@ -24,6 +58,19 @@ const QuestionContainer: React.FC<QuestionContainerProps> = ({ questionType }) =
             setQuestionSet(true);
         }
     })
+
+    useEffect(() => {
+        (async () => {
+          if (Platform.OS !== 'web') {
+            const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+            if (status !== 'granted') {
+              alert('Permission to access notifications was denied');
+              return;
+            }
+          }
+          scheduleDailyNotification();
+        })();
+      }, []);
 
     async function getCSVFileFromStorage(questionType) {
         const storage = getStorage(app);
