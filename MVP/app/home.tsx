@@ -5,7 +5,7 @@ import QuestionContainer from '../components/Questions';
 import SignupAndLogin from './../components/signup';
 import Practice from './../components/Practice';
 import Ranked from './../components/Ranked';
-//import HomePage from '@/components/HomePage';
+import HomePage from '@/components/HomePage';
 import {HelloWave} from './../components/HelloWave';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -18,15 +18,16 @@ const Tab = createBottomTabNavigator();
 export default function Index() {
   return (
       <Tab.Navigator initialRouteName="Squawk">
-        <Tab.Screen name="Mcq" children={() => <QuestionContainer questionType="mcq" />}/>
-        <Tab.Screen name="Saq" children={() => <QuestionContainer questionType="saq" />}/>
         <Tab.Screen name="Practice" component={Practice} />
-        <Tab.Screen name="Squawk" component={HelloWave} />
+        <Tab.Screen name="Squawk" component={HomePage} />
         <Tab.Screen name="Ranked" component={Ranked} />
       </Tab.Navigator>
   );
 }
 //<Tab.Screen name="test" component={HelloWave} />
+/*
+        <Tab.Screen name="Mcq" children={() => <QuestionContainer questionType="mcq" />}/>
+        <Tab.Screen name="Saq" children={() => <QuestionContainer questionType="saq" />}/>*/
 const styles = StyleSheet.create({
   container: {
     flex: 1,
