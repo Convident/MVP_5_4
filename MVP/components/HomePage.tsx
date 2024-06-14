@@ -15,15 +15,17 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function HomePage() {
+    const router = useRouter();
+
     return (
         <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={() => router.push('/squawk')}>
                 <Text style={styles.buttonText}>Squawk</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={() => router.push('/stats')}>
                 <Text style={styles.buttonText}>Stats</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={() => router.push('/milestones')}>
                 <Text style={styles.buttonText}>Milestones</Text>
             </TouchableOpacity>
         </View>
@@ -50,15 +52,3 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 });
-
-<View style={styles.buttonContainer}>
-    <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Squawk</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Stats</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Milestones</Text>
-    </TouchableOpacity>
-</View>
