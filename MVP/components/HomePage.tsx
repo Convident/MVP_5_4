@@ -20,7 +20,7 @@ function HomePage() {
     return (
         <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.button} onPress={() => router.push('/squawk')}>
-                <Text style={styles.buttonText}>Squawk</Text>
+                <Text style={styles.buttonText}>Happy lemon</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => router.push('/stats')}>
                 <Text style={styles.buttonText}>Stats</Text>
