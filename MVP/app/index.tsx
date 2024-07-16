@@ -38,6 +38,7 @@ const Login: React.FC = () => {
             />
             <Button title="Login" onPress={handleLogin} />
             <Button title="Register" onPress={() => router.push('/signup')} />
+            <Button title="Conversations" onPress={() => router.push('Conversations')} />
         </View>
     );
 };

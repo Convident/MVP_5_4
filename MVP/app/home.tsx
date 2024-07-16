@@ -1,11 +1,13 @@
-
+import React from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+//import { ScrollView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import QuestionContainer from '../components/Questions';
 import SignupAndLogin from './../components/signup';
 import Practice from './../components/Practice';
 import Ranked from './../components/Ranked';
 import HomePage from '@/components/HomePage';
+import Conversations from './Conversations';
 import {HelloWave} from './../components/HelloWave';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -21,6 +23,7 @@ export default function Index() {
         <Tab.Screen name="Practice" component={Practice} />
         <Tab.Screen name="Squawk" component={HomePage} />
         <Tab.Screen name="Ranked" component={Ranked} />
+        <Tab.Screen name="Conversations" component={Conversations} />
       </Tab.Navigator>
   );
 }
@@ -28,6 +31,9 @@ export default function Index() {
 /*
         <Tab.Screen name="Mcq" children={() => <QuestionContainer questionType="mcq" />}/>
         <Tab.Screen name="Saq" children={() => <QuestionContainer questionType="saq" />}/>*/
+
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -50,7 +56,12 @@ navigationButton: {
 text: {
     color: 'white',
 }
-});
+}); 
+
+
+
+
+
 /*
 
       <View style={styles.container}>
