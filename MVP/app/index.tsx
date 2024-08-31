@@ -1,3 +1,5 @@
+//page for logging in with credentials, etc
+
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
@@ -15,7 +17,7 @@ const Login: React.FC = () => {
             const auth = getAuth(app);
             const response = await signInWithEmailAndPassword(auth, email, password);
             console.log('User logged in:', response.user);
-            router.replace('/home');
+            router.replace('/main-home');
         } catch (error) {
             console.error('Error logging in:', error);
         }
@@ -38,7 +40,10 @@ const Login: React.FC = () => {
             />
             <Button title="Login" onPress={handleLogin} />
             <Button title="Register" onPress={() => router.push('/signup')} />
-            <Button title="Conversations" onPress={() => router.push('Conversations')} />
+            <Button title="ConvoChat" onPress={() => router.push('ConvoChat')} />
+            <Button title="Home" onPress={() => router.push('Home')} />
+            <Button title="Conversation" onPress={() => router.push('Conversation')} />
+
         </View>
     );
 };
