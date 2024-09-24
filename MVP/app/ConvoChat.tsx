@@ -32,7 +32,7 @@ const UnderlinedText: React.FC<{ text: string, incorrectPhrases: string[] }> = (
     return <Text>{getStyledText(text, incorrectPhrases)}</Text>;
 };
   
-// Main component, manage conversations,
+// Main component, manage conversations
 const ConvoChat: React.FC = () => {
     const [messages] = useState<Message[]>([
         { id: 'header', text: 'Restaurant Interaction', sender: 'header' },
